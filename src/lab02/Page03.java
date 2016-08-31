@@ -3,6 +3,7 @@ package lab02;
 import java.util.Random;
 
 public class Page03
+
 {
 
 	public static void main (String[] args)
@@ -30,6 +31,7 @@ public class Page03
 			System.out.println(n);
 		
 			if (n == target)
+			
 			{
 				count++;
 			}
@@ -37,9 +39,9 @@ public class Page03
 		}
 		
 		System.out.println(count);
-		
 		System.out.println("Expected to see 'AAA' 15.626 times");	
 		System.out.println ("Java's number is:" + count);
+	
 	}
 				
 }
