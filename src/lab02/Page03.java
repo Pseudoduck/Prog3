@@ -30,12 +30,12 @@ public class Page03
 		
 			System.out.println(n);
 		
-			if (n == target)
+			if (n.equals(target))
 			
 			{
-				count++;
+				count = count + 1;
 			}
-		
+			
 		}
 		
 		System.out.println(count);
