@@ -39,7 +39,11 @@ public class Page03
 		}
 		
 		System.out.println(count);
-		System.out.println("Expected to see 'AAA' 15.626 times");	
+		
+		double d = 0.25*0.25*0.25;
+		
+		System.out.println("Expected to see 'AAA'"+ d*1000 +"times");	
+		
 		System.out.println ("Java's number is:" + count);
 	
 	}
