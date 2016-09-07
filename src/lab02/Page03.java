@@ -12,10 +12,11 @@ public class Page03
 	
 		String threemers = "ATGC";
 		int count = 0;
+		int x = 1000;
 		String target = "AAA";
 		Random random = new Random();
 		
-		for (int i = 0; i < 1000; i++)
+		for (int i = 0; i < x; i++)
 		
 		{
 			char m1 = threemers.charAt(random.nextInt(4));
@@ -42,11 +43,10 @@ public class Page03
 		
 		double d = 0.25*0.25*0.25;
 		
-		System.out.println("Expected to see 'AAA'"+ d*1000 +"times");	
+		System.out.println("Expected to see 'AAA'"+ d*x +"times");	
 		
 		System.out.println ("Java's number is:" + count);
 	
 	}
-				
 }
 	
