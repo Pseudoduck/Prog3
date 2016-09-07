@@ -25,11 +25,11 @@ public class Page03
 				String n = Character.toString(m);
 				System.out.println(n);
 						
-			if (n.equals(target))
+					if (n.equals(target))
 			
-			{
-				count = count + 1;
-			}
+					{
+						count = count + 1;
+					}
 				}	
 		}
 		
