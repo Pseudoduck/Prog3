@@ -12,6 +12,7 @@ public class AminoAcidQuiz
 		"G",  "H", "I", "L", "K", "M", "F", 
 		"P", "S", "T", "W", "Y", "V" };
 	
+	
 	public static String[] FULL_NAMES = 
 		{"alanine","arginine", "asparagine", 
 		"aspartic acid", "cysteine",
