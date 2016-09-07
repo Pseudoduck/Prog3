@@ -12,34 +12,35 @@ public class Page03
 	
 		String threemers = "ATGC";
 		int count = 0;
+		int x = 1000;
 		String target = "AAA";
 		Random random = new Random();
 		
-		for (int i = 0; i < 1000; i++)
+		for (int i = 0; i < x; i++)
 		
 		{
-			char m1 = threemers.charAt(random.nextInt(4));
-			char m2 = threemers.charAt(random.nextInt(4));
-			char m3 = threemers.charAt(random.nextInt(4));
+			for (int t = 0; t < 4; t++)
+				{
+				char m = threemers.charAt(random.nextInt(4));
+				String n = Character.toString(m);
+				System.out.println(n);
+						
+					if (n.equals(target))
 			
-			String n1 = Character.toString(m1);
-			String n2 = Character.toString(m2);
-			String n3 = Character.toString(m3);
-			
-			String n = n1 + n2 + n3;
-		
-			System.out.println(n);
-		
-			if (n.equals(target))
-			
-			{
-				count = count + 1;
-			}
-			
+					{
+						count = count + 1;
+					}
+				}	
 		}
 		
 		System.out.println(count);
-		System.out.println("Expected to see 'AAA' 15.626 times");	
+		
+		double d = 0.25*0.25*0.25;
+		
+		System.out.println("Expected to see 'AAA'"+ d*x +"times");	
+		
 		System.out.println ("Java's number is:" + count);
+	
 	}
 }
+	
