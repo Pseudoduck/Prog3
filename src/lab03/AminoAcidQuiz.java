@@ -1,7 +1,7 @@
 package lab03;
 
 import java.util.Random;
-
+import java.util.Scanner;
 public class AminoAcidQuiz 
 
 {
@@ -26,5 +26,13 @@ public class AminoAcidQuiz
 		Random r = new Random();
 		int randomIndex = r.nextInt(FULL_NAMES.length);
 		System.out.println(FULL_NAMES[randomIndex]);
+		System.out.println("Plase enter one letter character for this amino acid:\n");
+		Scanner scan = new Scanner(System.in);
+		String s = scan.next();
+		System.out.println(s);
+		
+		
+		//String aString = System.console().readLine().toUpperCase();
+		
 	}
 }
