@@ -22,17 +22,24 @@ public class AminoAcidQuiz
 		"tyrosine", "valine"};
 
 	public static void main(String[] args)
+
 	{
+		
 		Random r = new Random();
 		int randomIndex = r.nextInt(FULL_NAMES.length);
 		System.out.println(FULL_NAMES[randomIndex]);
-		System.out.println("Plase enter one letter character for this amino acid:\n");
+		System.out.println("Plase enter one letter character for this amino acid:");
 		Scanner scan = new Scanner(System.in);
 		String s = scan.next();
-		System.out.println(s);
+		String aChar = "" + s.charAt(0);
+		System.out.println(aChar);
 		
+		if (aChar.equals(SHORT_NAMES[randomIndex]))
+			System.out.println("Right!");
 		
-		//String aString = System.console().readLine().toUpperCase();
+		else 
+			System.out.println("Wrong!" + " " + "Should be:" + SHORT_NAMES[randomIndex]);
 		
 	}
+	
 }

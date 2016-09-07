@@ -19,24 +19,18 @@ public class Page03
 		for (int i = 0; i < x; i++)
 		
 		{
-			char m1 = threemers.charAt(random.nextInt(4));
-			char m2 = threemers.charAt(random.nextInt(4));
-			char m3 = threemers.charAt(random.nextInt(4));
-			
-			String n1 = Character.toString(m1);
-			String n2 = Character.toString(m2);
-			String n3 = Character.toString(m3);
-			
-			String n = n1 + n2 + n3;
-		
-			System.out.println(n);
-		
+			for (int t = 0; t < 4; t++)
+				{
+				char m = threemers.charAt(random.nextInt(4));
+				String n = Character.toString(m);
+				System.out.println(n);
+						
 			if (n.equals(target))
 			
 			{
 				count = count + 1;
 			}
-			
+				}	
 		}
 		
 		System.out.println(count);
