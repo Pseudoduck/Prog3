@@ -23,10 +23,13 @@ public class AminoAcidsQuiz
 		"tyrosine", "valine"};
 
 	public static void main(String[] args)
-
+	{
+	boolean b = true;
+	{
+	
+	do
 	
 	{
-		
 		Random r = new Random();
 		int randomIndex = r.nextInt(FULL_NAMES.length);
 		System.out.println(FULL_NAMES[randomIndex]);
@@ -34,14 +37,20 @@ public class AminoAcidsQuiz
 		Scanner scan = new Scanner(System.in);
 		String s = scan.next();
 		String aChar = "" + s.charAt(0);
-		System.out.println(aChar);
-		
-		if (aChar.equals(SHORT_NAMES[randomIndex]))
+		System.out.println(aChar.toUpperCase());
+	 	
+		if(aChar.toUpperCase().equals(SHORT_NAMES[randomIndex]))
+		{
 			System.out.println("Right!");
-		
+		}
 		else 
-			System.out.println("Wrong!" + " " + "Should be:" + SHORT_NAMES[randomIndex]);
+		{
+			System.out.println("Wrong!" + " " + "Should be:" + SHORT_NAMES[randomIndex] + "\nYou cannot continue!");
+			break;
+		}
+	} while (b = true);
 		
+	}	
 	}
 	
 }
