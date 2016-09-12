@@ -19,7 +19,7 @@ public class Page03
 		Random random = new Random();
 		String s = "";
 		
-		for (int i = 0; i < 1000; i++)
+		for (int i = 0; i < times; i++)
 		
 		{
 				for (int t=0; t<3; t++)
