@@ -1,3 +1,5 @@
+//write a for loop to replace direct repetition between line 21-28; avoid the use of "magical numbers" 
+
 package lab02;
 
 import java.util.Random;
