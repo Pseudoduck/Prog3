@@ -20,13 +20,14 @@ public class AminoAcidsQuiz
 		"serine","threonine","tryptophan", 
 		"tyrosine", "valine"};
 
-	public static void main(String[] args) throws Exception
+	public static void main(String[] args)
 	{
 		boolean b = true;
 		int score = 0;		
 		float secondsLimit = 30f;
 		float millisToSeconds = 1000f;
 		String quit = "quit";
+		Scanner scan = new Scanner(System.in);
 		long startTime = System.currentTimeMillis();
 		
 		do
@@ -35,7 +36,6 @@ public class AminoAcidsQuiz
 			int randomIndex = r.nextInt(FULL_NAMES.length);
 			System.out.println(FULL_NAMES[randomIndex]);
 			System.out.println("Enter the one letter character for this amino acid (or type 'quit' to quit the quiz):");					
-			Scanner scan = new Scanner(System.in);
 			String s = scan.next();
 			
 			if(s.equals(quit)) //detect if user decides to quit
@@ -61,7 +61,6 @@ public class AminoAcidsQuiz
 							System.out.println("Right! " + "Score= " + score + "; " + 
 							"seconds= " + diffTime/millisToSeconds + " out of " + secondsLimit + "\n"); 	
 						}
-					
 				
 					else // tell user when test running time is more than 30 seconds
 						{
@@ -96,6 +95,6 @@ public class AminoAcidsQuiz
 		} while (b);
 			
 		System.out.println("Test ends with score of " + score);
-			
+		scan.close();	
 	}		
 }
