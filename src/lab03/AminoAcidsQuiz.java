@@ -53,7 +53,7 @@ public class AminoAcidsQuiz
 					long endTime = System.currentTimeMillis();
 					long diffTime = endTime - startTime;
 					
-					if (diffTime/millisToSeconds < secondsLimit) // check if the test running is time less than 30 seconds
+					if (diffTime/millisToSeconds < secondsLimit) // check if the test running time is less than 30 seconds
 						{
 							endTime = System.currentTimeMillis();
 							diffTime = endTime - startTime;
