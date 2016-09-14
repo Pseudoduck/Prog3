@@ -35,7 +35,7 @@ public class AminoAcidsQuiz
 			Random r = new Random();
 			int randomIndex = r.nextInt(FULL_NAMES.length);
 			System.out.println(FULL_NAMES[randomIndex]);
-			System.out.println("Enter the one letter character for this amino acid (or type 'quit' to quit the quiz):");					
+			System.out.println("Enter the one letter code for this amino acid (or type 'quit' to quit the quiz):");					
 			String s = scan.next();
 			
 			if(s.equals(quit)) //detect if user decides to quit
@@ -62,7 +62,7 @@ public class AminoAcidsQuiz
 							"seconds= " + diffTime/millisToSeconds + " out of " + secondsLimit + "\n"); 	
 						}
 				
-					else // tell user when test running time is more than 30 seconds
+					else // nullify input when test running time is more than 30 seconds
 						{
 						endTime = System.currentTimeMillis();
 						diffTime = endTime - startTime;
