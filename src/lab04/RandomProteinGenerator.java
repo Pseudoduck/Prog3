@@ -36,40 +36,41 @@ public class RandomProteinGenerator
 	* 
 	*/
     //boolean useUniformFrequencies;
+   
     Random r = new Random();
     float D[] ={};
     public RandomProteinGenerator( boolean useUniformFrequencies)
     {
 
-	if (useUniformFrequencies==true)
-	    {
-		D= EQUAL_DISTRIBUTION;
-	    }
-	else
+    	if (useUniformFrequencies==true)
+	    	{
+    			D= EQUAL_DISTRIBUTION;
+	    	}
+    	
+    	else
 
-	    {
-		D= REAL_DISTRIBUTION;
-	    }
-
+	    	{
+    			D= REAL_DISTRIBUTION;
+	    	}
     }
 
     /*
      * Returns a randomly generated protein of length length.
      */
     public String getRandomProtein(int length)
-    {
-	Random r = new Random();
-	String protSeq = "";
+    	{
+    		Random r = new Random();
+    		String protSeq = "";
 
-	for (int x = 0; x < length; x++)
-	    {
-		int randomIndex = r.nextInt(SHORT_NAMES.length);
-		String m = SHORT_NAMES[randomIndex];
-		protSeq = protSeq + m;
-	    }
+    		for (int x = 0; x < length; x++)
+    		{
+    			int randomIndex = r.nextInt(SHORT_NAMES.length);
+    			String m = SHORT_NAMES[randomIndex];
+    			protSeq = protSeq + m;
+    		}
 
-	return protSeq;
-    }
+    		return protSeq;
+    	}
 
     /*
      * Returns the probability of seeing the given sequence
@@ -79,12 +80,12 @@ public class RandomProteinGenerator
      */
     public double getExpectedFrequency(String protSeq)
     {
-	double fr2 = 1d;
-	for (int i = 0; i < protSeq.length();i++)
+    	double fr2 = 1d;
+    	for (int i = 0; i < protSeq.length();i++)
 	    {
-		char a = protSeq.charAt(i);
-		String b = Character.toString(a);
-		int Index = Arrays.asList(SHORT_NAMES).indexOf(b);
+    		char a = protSeq.charAt(i);
+    		String b = Character.toString(a);
+    		int Index = Arrays.asList(SHORT_NAMES).indexOf(b);
 		/*if (boo==true)
 		  {
 		  double fr1 = EQUAL_DISTRIBUTION[Index];
@@ -96,10 +97,10 @@ public class RandomProteinGenerator
 		  fr2 = fr2 * fr1;
 		  }
 		*/
-		float fr1 = D[Index];
-		fr2 = fr2 * fr1;
+    		float fr1 = D[Index];
+    		fr2 = fr2 * fr1;
 	    }
-	return fr2;
+    	return fr2;
     }
 
     /*
@@ -125,17 +126,16 @@ public class RandomProteinGenerator
 
     public static void main(String[] args) throws Exception
     {
-	RandomProteinGenerator uniformGen = new RandomProteinGenerator(true);
-	String testProtein = "ACD";
-	int numIterations =  10000000;
-	System.out.println(uniformGen.getExpectedFrequency(testProtein));  // should be 0.05^3 = 0.000125
-	System.out.println(uniformGen.getFrequencyFromSimulation(testProtein,numIterations));  // should be close
+    	RandomProteinGenerator uniformGen = new RandomProteinGenerator(true);
+    	String testProtein = "ACD";
+    	int numIterations =  10000000;
+    	System.out.println(uniformGen.getExpectedFrequency(testProtein));  // should be 0.05^3 = 0.000125
+    	System.out.println(uniformGen.getFrequencyFromSimulation(testProtein,numIterations));  // should be close
 
-	RandomProteinGenerator realisticGen = new RandomProteinGenerator(false);
+    	RandomProteinGenerator realisticGen = new RandomProteinGenerator(false);
 
 	// should be 0.072658 *  0.024692 * 0.050007 == 8.97161E-05
-	System.out.println(realisticGen.getExpectedFrequency(testProtein));
-	System.out.println(realisticGen.getFrequencyFromSimulation(testProtein,numIterations));  // should be close
-
+    	System.out.println(realisticGen.getExpectedFrequency(testProtein));
+    	System.out.println(realisticGen.getFrequencyFromSimulation(testProtein,numIterations));  // should be close
     }
 }
