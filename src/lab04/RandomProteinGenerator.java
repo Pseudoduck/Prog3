@@ -49,8 +49,7 @@ public class RandomProteinGenerator
 			
 		{
 			D= REAL_DISTRIBUTION;
-		}
-		
+		}		
 	}
 	
 	/*
