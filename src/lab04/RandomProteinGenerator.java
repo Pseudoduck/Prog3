@@ -58,16 +58,17 @@ public class RandomProteinGenerator
 	 */
 	public String getRandomProtein(int length)
 	{
-		String protSeq1 = "";
+		Random r = new Random();
+		String protSeq = "";
 			
 		for (int x = 0; x < length; x++)
 			{
 			int randomIndex = r.nextInt(SHORT_NAMES.length);
 			String m = SHORT_NAMES[randomIndex];
-			protSeq1 = protSeq1 + m;
+			protSeq = protSeq + m;
 			}		
 		
-		return protSeq1;
+		return protSeq;
 	}
 	
 	/*
