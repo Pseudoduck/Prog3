@@ -37,10 +37,20 @@ public class RandomProteinGenerator
 	 */
 	//boolean useUniformFrequencies;
 	Random r = new Random();
-	boolean boo;
+	float D[] ={};
 	public RandomProteinGenerator( boolean useUniformFrequencies)
 	{
-	
+		
+		if (useUniformFrequencies==true)
+		{
+			D= EQUAL_DISTRIBUTION;
+		}
+		else
+			
+		{
+			D= REAL_DISTRIBUTION;
+		}
+		
 	}
 	
 	/*
@@ -74,7 +84,7 @@ public class RandomProteinGenerator
 			char a = protSeq.charAt(i);
 			String b = Character.toString(a);
 			int Index = Arrays.asList(SHORT_NAMES).indexOf(b);
-			if (boo==true)
+			/*if (boo==true)
 			{
 			double fr1 = EQUAL_DISTRIBUTION[Index];
 			fr2 = fr2 * fr1;
@@ -84,6 +94,9 @@ public class RandomProteinGenerator
 				double fr1 = REAL_DISTRIBUTION[Index];
 				fr2 = fr2 * fr1;
 			}
+			*/
+			float fr1 = D[Index];
+			fr2 = fr2 * fr1;
 		}
 		return fr2;
 	}
@@ -95,14 +108,14 @@ public class RandomProteinGenerator
 	public double getFrequencyFromSimulation( String protSeq, int numIterations )
 	{
 	
-		int c = 0;
+		double c = 0;
 		for (int i = 0; i < numIterations; i++)
 		{
 			String seq = getRandomProtein(protSeq.length());
 			
 			if (seq.equals(protSeq))
 			{
-				c = c + 1;
+				c += 1;
 			}
 		}
 		double ratio = c/numIterations;
