@@ -37,27 +37,31 @@ public class RandomProteinGenerator
 	 */
 	//boolean useUniformFrequencies;
 	Random r = new Random();
-	boolean boo;
+	boolean f;
 	public RandomProteinGenerator( boolean useUniformFrequencies)
 	{
 	
+		f = useUniformFrequencies;
 	}
+	
+	
 	
 	/*
 	 * Returns a randomly generated protein of length length.
 	 */
 	public String getRandomProtein(int length)
 	{
-		String protSeq1 = "";
+		String protSeq = "";
 			
 		for (int x = 0; x < length; x++)
 			{
 			int randomIndex = r.nextInt(SHORT_NAMES.length);
 			String m = SHORT_NAMES[randomIndex];
-			protSeq1 = protSeq1 + m;
+			protSeq = protSeq + m;
 			}		
 		
-		return protSeq1;
+		return protSeq;
+		
 	}
 	
 	/*
@@ -74,10 +78,10 @@ public class RandomProteinGenerator
 			char a = protSeq.charAt(i);
 			String b = Character.toString(a);
 			int Index = Arrays.asList(SHORT_NAMES).indexOf(b);
-			if (boo==true)
+			if (f=true)
 			{
-			double fr1 = EQUAL_DISTRIBUTION[Index];
-			fr2 = fr2 * fr1;
+				double fr1 = EQUAL_DISTRIBUTION[Index];
+				fr2 = fr2 * fr1;
 			}
 			else
 			{
@@ -106,6 +110,7 @@ public class RandomProteinGenerator
 			}
 		}
 		double ratio = c/numIterations;
+		System.out.println(numIterations);
 		return ratio;
 	}
 	
