@@ -42,7 +42,7 @@ public class FastaSequence
 				
 		while (nextLine2 != null) 	
 			{
-				if (!(nextLine1.charAt(0) == '>'))
+				if (!(nextLine2.charAt(0) == '>'))
 				sequenceList.add(nextLine2);
 				nextLine2 = reader.readLine();
 			}
@@ -52,7 +52,7 @@ public class FastaSequence
 			
 			for (int x =0; x < nextLine3.length();x++)
 				
-				if (!(nextLine3.charAt(0) == '>') && nextLine3.charAt(x)=='G' ||nextLine3.charAt(x)=='C' )
+				if ((!(nextLine3.charAt(0) == '>')) && nextLine3.charAt(x)=='G' ||nextLine3.charAt(x)=='C' )
 				{
 					numC += 1;	
 				}
