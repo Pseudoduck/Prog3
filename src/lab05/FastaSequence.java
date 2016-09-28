@@ -40,18 +40,19 @@ public class FastaSequence
 			}
 			return headerList;
 				
-		while (!(nextLine2 != null)) 	
+		while (nextLine2 != null) 	
 			{
+				if (!(nextLine1.charAt(0) == '>'))
 				sequenceList.add(nextLine2);
 				nextLine2 = reader.readLine();
 			}
 			return sequenceList;
 		
-		while (!(nextLine3 != null))
+		while (nextLine3 != null)
 			
 			for (int x =0; x < nextLine3.length();x++)
 				
-				if (nextLine3.charAt(x)=='G' ||nextLine3.charAt(x)=='C' )
+				if (!(nextLine3.charAt(0) == '>') && nextLine3.charAt(x)=='G' ||nextLine3.charAt(x)=='C' )
 				{
 					numC += 1;	
 				}
