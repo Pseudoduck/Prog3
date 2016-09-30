@@ -5,10 +5,18 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
-import java.io.FileNotFoundException;
 
 public class FastaSequence 
 {	
+	private String header;
+	private String sequence;
+	
+	public FastaSequence(String header, String sequence)
+	{
+		this.header = header;
+		this.sequence = sequence;
+	}
+	
 	public static void main(String[] args) throws Exception
 	{
 		List<FastaSequence> fastaList = 
@@ -24,56 +32,49 @@ public class FastaSequence
 	
 	public static List<FastaSequence>readFastaFile(String filepath) throws Exception
 	{
-		List<FastaSequence> headerList = new ArrayList<FastaSequence>();
-		List<FastaSequence> sequenceList = new ArrayList<FastaSequence>();
-		double numC = 0;
-		BufferedReader reader = new BufferedReader(new FileReader(filepath));
-		String nextLine1 = reader.readLine();
-		String nextLine2 = reader.readLine();
-		String nextLine3 = reader.readLine();
+		List<FastaSequence> fList = new ArrayList<FastaSequence>();
+		BufferedReader reader = new BufferedReader(new FileReader(new File(filepath)));
+		String line = reader.readLine();
+		String fastaHeader ="";
+		String fastaSeq="";
 		
-		while (nextLine1 != null) 
+		while (line != null) 
 			{
-			if (nextLine1.charAt(0) == '>')
-				headerList.add(nextLine1.substring(1));
-				nextLine1 = reader.readLine();
+			if (line.charAt(0) == '>')
+				fastaHeader = line.substring(1);
+			else
+				fastaSeq = line;
+				fList.add(new FastaSequence(fastaHeader,fastaSeq));
+			reader.close();
 			}
-			return headerList;
+		return fList;
 				
-		while (nextLine2 != null) 	
+	}	
+		
+	public String getHeader()
+	{
+		return header; 
+	}
+		
+	public String getSequence()
+	{
+		return sequence; 
+	}
+		
+	public float getGCRatio()
+	{
+		float numC = 0;
+		float ratio;
+		for (int i = 0; i < sequence.length(); i++)
+		{
+			if (sequence.charAt(i) == 'G' || sequence.charAt(i) == 'C')
 			{
-				if (!(nextLine2.charAt(0) == '>'))
-				sequenceList.add(nextLine2);
-				nextLine2 = reader.readLine();
+				numC++;
 			}
-			return sequenceList;
-		
-		while (nextLine3 != null)
-			
-			for (int x =0; x < nextLine3.length();x++)
-				
-				if ((!(nextLine3.charAt(0) == '>')) && nextLine3.charAt(x)=='G' ||nextLine3.charAt(x)=='C' )
-				{
-					numC += 1;	
-				}
-			double ratio = numC/nextLine3.length();
-			return ratio;
-			
-		public String getHeader()
-		{
-			return headerList; 
 		}
+		ratio = numC/sequence.length();
+		return ratio;
+	}
 		
-		public String getSequence()
-		{
-			return sequenceList; 
-		}
-		
-		public String getGCRatio()
-		{
-			return ratio; 
-		}
-		
-		}
-
+	
 }
