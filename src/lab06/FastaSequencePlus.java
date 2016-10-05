@@ -1,0 +1,81 @@
+package lab06;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.List;
+
+public class FastaSequencePlus
+{
+	private String header;
+	private String sequence;
+
+	public FastaSequencePlus(String header, String sequence)
+	{
+		this.header = header;
+		this.sequence = sequence;
+	}
+
+	public static List <FastaSequencePlus> readFastaFile(String filepath) throws Exception
+	{
+		List<FastaSequencePlus> fList = new ArrayList<FastaSequencePlus>();
+		BufferedReader reader = new BufferedReader(new FileReader(filepath));
+		String line="";
+		String fastaHeader ="";
+		String fastaSeq="";
+		
+		while ((line=reader.readLine()) != null)
+		{	
+			if (line.charAt(0)== '>')
+				{
+					fastaHeader = line.substring(1);
+				}
+			else
+				{
+					fastaSeq = line;
+					fList.add(new FastaSequencePlus(fastaHeader,fastaSeq));
+				}
+		}
+		reader.close();
+		return fList;			
+	}	
+		
+	public String getHeader()
+	{
+		return this.header; 
+	}
+		
+	public String getSequence()
+	{
+		return this.sequence; 
+	}
+	
+	public float getGCRatio()
+	{
+		float numC = 0;
+		float ratio;
+		for (int i = 0; i < sequence.length(); i++)
+		{
+			if (sequence.charAt(i) == 'G' || sequence.charAt(i) == 'C')
+			{
+				numC++;
+			}
+		}
+		ratio = numC/sequence.length();
+		return ratio;
+	}
+		
+	public static void main(String[] args) throws Exception
+	{
+		List<FastaSequencePlus> fastaList = 
+				FastaSequencePlus.readFastaFile("D:\\Programming\\Cygwin64\\home\\Lei Zhao\\sample.fasta");
+		
+		for( FastaSequencePlus fs : fastaList)
+		{
+			System.out.println(fs.getHeader());
+			System.out.println(fs.getSequence());
+			System.out.println(fs.getGCRatio());
+		}
+	}
+	
+}
