@@ -81,13 +81,13 @@ public class FastaSequencePlus
 		HashMap<String, Integer> uniSeq = new HashMap<String, Integer>();
 		for (FastaSequencePlus fs:fList)
 		{
-			Integer numC = uniSeq.get(fs.getSequence());
-			if (numC == null)
+			Integer count = uniSeq.get(fs.getSequence());
+			if (count == null)
 			{
-				numC = 0;
+				count = 0;
 			}
-			numC ++;
-			uniSeq.put(fs.getSequence(),numC);
+			count ++;
+			uniSeq.put(fs.getSequence(),count);
 		}
 		
 		Map<String,Integer> uniSeqSorted = mapSorted(uniSeq);
@@ -107,19 +107,20 @@ public class FastaSequencePlus
 		List myList = new LinkedList(map.entrySet());
 		Collections.sort
 		(
-				myList, new Comparator()
+			myList, new Comparator()
+			{
+				public int compare (Object ob1, Object ob2)
 				{
-					public int compare (Object ob1, Object ob2)
-					{
-						return ( (Comparable) ((Map.Entry)(ob1)).getValue()).compareTo(((Map.Entry)(ob2)).getValue());
-					}
+					return ( (Comparable) ((Map.Entry)(ob1)).getValue()).compareTo(((Map.Entry)(ob2)).getValue());
 				}
+			}
 		);
+		
 		HashMap hashMapSorted = new LinkedHashMap();
 		for (Iterator a = myList.iterator(); a.hasNext();)
 		{
 			Map.Entry myEntry = (Map.Entry)a.next();
-			hashMapSorted.put(myEntry.getKey(),myEntry.getValue());
+			hashMapSorted.put(myEntry.getKey(), myEntry.getValue());
 		}
 		return hashMapSorted;
 	}
@@ -127,9 +128,8 @@ public class FastaSequencePlus
 	public static void main(String[] args) throws Exception
 	{
 		File inFile = new File ("D:\\Programming\\Cygwin64\\home\\Lei Zhao\\labSixSampleInput.fasta");
-		File outFile = new File ("D:\\Programming\\Cygwin64\\home\\Lei Zhao\\labSixOutput.fasta");
-		List<FastaSequencePlus> fastaList = 
-				FastaSequencePlus.readFastaFile(inFile);
+		File outFile = new File ("D:\\Programming\\Cygwin64\\home\\Lei Zhao\\labSixOutput.txt");
+		List<FastaSequencePlus> fastaList = FastaSequencePlus.readFastaFile(inFile);
 		
 		for( FastaSequencePlus fs : fastaList)
 		{
