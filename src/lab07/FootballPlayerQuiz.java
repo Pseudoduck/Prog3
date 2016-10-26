@@ -18,7 +18,8 @@ import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
 
 
-public class FootballPlayerQuiz extends JFrame{
+public class FootballPlayerQuiz extends JFrame
+{
 	
 	private static final long serialVersionUID = 3794059922116115530L;
 	
@@ -50,7 +51,8 @@ public class FootballPlayerQuiz extends JFrame{
 	
 	private JCheckBox enableCheatItem;
     	
-	public class Timer implements Runnable {
+	public class Timer implements Runnable 
+	{
     	
     	 private ActionListener enter;
     	 private ActionListener quit;
@@ -312,7 +314,7 @@ public class FootballPlayerQuiz extends JFrame{
     
     public static void main(String[] args) 
 	{
-    	new FootballPlayerQuiz();
-    	      			
+    	new FootballPlayerQuiz();    	      			
 	}	
+
 }
